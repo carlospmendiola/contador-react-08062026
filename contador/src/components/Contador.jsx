@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 
 
-export const Contador = ({valor}) => {
+export const Contador = ({valor,maximo, minimo,step}) => {
   let [contador, setContador] = useState (valor)
 
   const handleIncrementar =(ev) => {
-    if (contador < 50) {
-      setContador(contador = contador + 1)
+    if (contador <= maximo - step) {
+      setContador(contador = contador + step)
     }
   }
-  const handleDecrementar =()=> {
-    if (contador > 0) {
-      setContador(contador = contador - 1)
+  const handleDecrementar =(ev)=> {
+    if (contador >= minimo + step) {
+      setContador(contador = contador - step)
     }
   }
   const handleResetear =()=> {

@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <h1>Práctica contador</h1>
-      <Contador valor= {5} />
-      
+      <Contador valor= {4} maximo= { 80 } minimo = { 0 } step = { 2 } />
+
     </>
   )
 }
