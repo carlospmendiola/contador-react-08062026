@@ -5,19 +5,35 @@ import PropTypes from 'prop-types';
 export const Contador = ({valor,maximo, minimo,step}) => {
   let [contador, setContador] = useState (valor)
 
-  const handleIncrementar =(ev) => {
+  const handleAccion =(accion) => { switch (accion) {
+  case 'incrementar':
     if (contador <= maximo - step) {
       setContador(contador = contador + step)
-    }
-  }
-  const handleDecrementar =(ev)=> {
+      }
+    break
+  case 'decrementar':
     if (contador >= minimo + step) {
       setContador(contador = contador - step)
     }
+    break
+  default: setContador(contador = valor)
   }
-  const handleResetear =()=> {
-      setContador(contador = valor)
-  }
+    // código si no coincide ningún caso
+}
+
+  // const handleIncrementar =(ev) => {
+  //   if (contador <= maximo - step) {
+  //     setContador(contador = contador + step)
+  //   }
+  // }
+  // const handleDecrementar =(ev)=> {
+  //   if (contador >= minimo + step) {
+  //     setContador(contador = contador - step)
+  //   }
+  // }
+  // const handleResetear =()=> {
+  //     setContador(contador = valor)
+  // }
 
 
   return (
@@ -26,13 +42,13 @@ export const Contador = ({valor,maximo, minimo,step}) => {
       <h3>El valor es: {contador}</h3>
 
       <div>
-        <button onClick={handleIncrementar}>
+        <button onClick={() => handleAccion('incrementar')}>
           Incrementar
         </button>  
-        <button onClick={handleDecrementar}>
+        <button onClick={() => handleAccion('decrementar')}>
           Decrementar
         </button>   
-        <button onClick={handleResetear}>
+        <button onClick={() => handleAccion('resetear')}>
         Resetear
         </button> 
       </div>
